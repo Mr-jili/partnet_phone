@@ -1,31 +1,25 @@
-import axios, { AxiosInstance, AxiosError, AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosError, AxiosResponse } from 'axios';
 
 const service: AxiosInstance = axios.create({
-    timeout: 5000
+    baseURL: 'https://some-domain.com/api/',
+    timeout: 5000,
+    headers: {'X-Custom-Header': 'foobar'}
 });
 
-service.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-        return config;
-    },
-    (error: AxiosError) => {
-        console.log(error);
-        return Promise.reject();
-    }
-);
+service.defaults.headers.common['Authorization'] = '';
 
-service.interceptors.response.use(
-    (response: AxiosResponse) => {
-        if (response.status === 200) {
-            return response;
-        } else {
-            Promise.reject();
-        }
-    },
-    (error: AxiosError) => {
-        console.log(error);
-        return Promise.reject();
-    }
-);
+service.interceptors.request.use((config) => {
+    return config;
+}, (error: AxiosError) => {
+    console.log(error);
+    return Promise.reject();
+});
+
+service.interceptors.response.use((response: AxiosResponse) => {
+    return response;
+}, (error: AxiosError) => {
+    console.log(error);
+    return Promise.reject();
+});
 
 export default service;
