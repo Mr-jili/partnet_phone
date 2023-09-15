@@ -19,8 +19,7 @@
         "allowJs": true,
         "types": [
             "node",
-            "vite/client",
-            "element-plus/global"
+            "vite/client"
         ],
         "paths": {
             "@/*": [

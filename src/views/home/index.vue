@@ -9,7 +9,7 @@
             </div>
             <el-input v-model="state.input2" placeholder="请输入">
                 <template #append>
-                    <el-bottom></el-bottom>
+                    <el-button type="primary">搜索</el-button>
                 </template>
             </el-input>
         </div>
@@ -18,8 +18,8 @@
     </div>
 </template>
 <script lang="ts" setup>
+import { options } from './params';
 import { reactive } from 'vue';
-const options = require('./params')
 
 const state = reactive({
     value: '',
@@ -29,5 +29,5 @@ const state = reactive({
 </script>
 
 <style lang="scss">
-@import url('./index.module.scss');
+@import "./index.module.scss";
 </style>

@@ -8,4 +8,4 @@ declare module '*.vue' {
 
 declare module '*.scss'
 
-declare module '*element-plus'
+declare module 'element-plus*'
