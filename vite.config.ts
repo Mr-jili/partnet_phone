@@ -1,6 +1,7 @@
 import { type ConfigEnv, type UserConfigExport } from "vite"
 import vue from "@vitejs/plugin-vue"
 import path, { resolve } from "path"
+import sass from 'sass'
 
 export default (configEnv: ConfigEnv): UserConfigExport => {
     return {
@@ -9,6 +10,13 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
             alias: {
                 "@": resolve(__dirname, "./src")
             }
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    implementation: sass,
+                },
+            },
         },
         server: {
             https: false,
